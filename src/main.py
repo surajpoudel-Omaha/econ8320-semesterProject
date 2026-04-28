@@ -4,9 +4,18 @@ import plotly.express as px
 from datetime import date
 
 st.title("US Labor Statistics Dashboard")
+nonFarmersWorkers = pd.read_csv("./data/Nonfarm Workers.csv")
 unEmployment = pd.read_csv("../src/data/Unemployment Data.csv")
 unEmployment = unEmployment.replace("-", pd.NA)
 unEmployment['month'] = unEmployment['period'].str.replace('[A-Za-z]', '', regex=True).astype(int)
+
+unemploymentXNonFarmers = pd.merge(
+            unEmployment [['year', 'period', 'Us Unemployment']],
+            nonFarmersWorkers,
+            on=["year", "period"],
+            how="outer"
+)
+
 
 current_year = date.today().year
 current_month = date.today().month
@@ -26,8 +35,6 @@ labelMap = {
 
 reverse_map = {v: k for k, v in labelMap.items()}
 
-unEmployment['month'] = unEmployment['period'].str.replace('[A-Za-z]', '', regex=True).astype(int)
-
 for col in labelMap.keys():
     unEmployment[col] = pd.to_numeric(unEmployment[col])
 
@@ -40,28 +47,29 @@ currentTitle = f"Unemployment as of: {current_year}-{current_month}-{current_day
 
 unEmployment = unEmployment.sort_values("date")
 
-
 filtered = unEmployment[
     (unEmployment["year"] == current_year) &
     (unEmployment["month"] == current_month)
 ].dropna()
-
-print(filtered)
 
 if not filtered.empty:
     latest = filtered.iloc[0]
 else:
     latest = unEmployment.sort_values(["year", "month"]).dropna().iloc[-1]
 
+### Unemployment DashBoard
+nonFarmWorkers = nonFarmersWorkers.sort_values(["year", "month"]).dropna().iloc[-1]
+
 container = st.container()
 
 
 container.subheader(currentTitle)
-col1, col2, col3, col4 = container.columns(4)
+col1, col2, col3, col4, col5 = container.columns(5)
 col1.metric("US", f"{latest['Us Unemployment']}%")
 col2.metric("US Women", f"{latest['Women Unemployment']}%")
 col3.metric("US Men", f"{latest['Men Unemployment']}%")
 col4.metric("Nebraska", f"{latest['Nebraska Unemployment']}%")
+col5.metric("Non Farmers Workers", f"{nonFarmWorkers['value']}")
 
 
 container2 = st.container()
@@ -74,6 +82,7 @@ with col2:
         if st.checkbox(label, value=(label in ["Men", "Women"])):
             selected_labels.append(label)
     selected_columns = [reverse_map[label] for label in selected_labels]
+
 with col1:
     fig = px.line(
         unEmployment,
@@ -116,4 +125,5 @@ fig2.update_layout(
 
 st.plotly_chart(fig2)
 
+### Unemployment over Non-Farmer Workers DashBoard
 
