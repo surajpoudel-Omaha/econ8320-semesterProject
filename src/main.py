@@ -2,10 +2,17 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 from datetime import date
+import os
 
+baseDir = os.path.dirname(os.path.abspath(__file__))
+
+nonFarmWorkersDir = os.path.join(baseDir,"data", "Nonfarm Workers.csv")
+unemploymentDir = os.path.join(baseDir,"data", "Unemployment Data.csv")
+st.write(nonFarmWorkersDir)
 st.title("US Labor Statistics Dashboard")
-nonFarmersWorkers = pd.read_csv("../src/data/Nonfarm Workers.csv")
-unEmployment = pd.read_csv("../src/data/Unemployment Data.csv")
+
+nonFarmersWorkers = pd.read_csv(nonFarmWorkersDir)
+unEmployment = pd.read_csv(unemploymentDir)
 unEmployment = unEmployment.replace("-", pd.NA)
 unEmployment['month'] = unEmployment['period'].str.replace('[A-Za-z]', '', regex=True).astype(int)
 
