@@ -4,7 +4,7 @@ import plotly.express as px
 from datetime import date
 
 st.title("US Labor Statistics Dashboard")
-nonFarmersWorkers = pd.read_csv("./data/Nonfarm Workers.csv")
+nonFarmersWorkers = pd.read_csv("../src/data/Nonfarm Workers.csv")
 unEmployment = pd.read_csv("../src/data/Unemployment Data.csv")
 unEmployment = unEmployment.replace("-", pd.NA)
 unEmployment['month'] = unEmployment['period'].str.replace('[A-Za-z]', '', regex=True).astype(int)
