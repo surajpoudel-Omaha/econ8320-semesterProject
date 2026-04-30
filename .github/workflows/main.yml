@@ -2,6 +2,9 @@ on:
   schedule:
   - cron: "0 2 * * 5"
   workflow_dispatch:
+
+permissions:
+  contents: write
   
 jobs:
   run_script:
@@ -26,11 +29,14 @@ jobs:
           
       - name: Commit Changes
         run: |
-          git config --global user.name "surajpoudel-Omaha"
-          git config --global user.email "poudel.suraj36@gmail.com"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add .
           git commit -m "Automated data update"
           git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
         
         
           
