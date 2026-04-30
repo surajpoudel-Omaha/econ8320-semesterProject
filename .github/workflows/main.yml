@@ -1,0 +1,36 @@
+on:
+  schedule:
+  - cron: "0 2 * * 5"
+  workflow_dispatch:
+  
+jobs:
+  run_script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v6.2.0
+        with:
+          python-version: "3.13.1"
+          pip-version: "26.1"
+      - name: Install Dependency 
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run Data Collection
+        run: |
+          python src/scripts/fetchData.py
+          
+      - name: Commit Changes
+        run: |
+          git config --global user.name "surajpoudel-Omaha"
+          git config --global user.email "poudel.suraj36@gmail.com"
+          git add .
+          git commit -m "Automated data update"
+          git push
+        
+        
+          
