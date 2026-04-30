@@ -14,7 +14,7 @@ nonFarmWorkersDir = os.path.join(baseDir,"data", "Nonfarm Workers.csv")
 expendituresDir = os.path.join(baseDir,"data", "Expenditures.csv")
 unemploymentDir = os.path.join(baseDir,"data", "Unemployment Data.csv")
 weeklEarningDir = os.path.join(baseDir,"data", "Omaha Weekly Earnings.csv")
-weeklHoursDir = os.path.join(baseDir,"data", "Omaha Weekly hours.csv")
+weeklHoursDir = os.path.join(baseDir,"data", "Omaha Weekly Hours.csv")
 
 nonFarmersWorkers = pd.read_csv(nonFarmWorkersDir)
 unEmployment = pd.read_csv(unemploymentDir)
