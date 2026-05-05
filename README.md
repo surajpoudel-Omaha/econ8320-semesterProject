@@ -34,5 +34,8 @@ Data or Variables using the BLS API:
 10. Average Weekly Hours of All Employees Omaha, NE (Series SMU31365400500000002),
 11. Average annual expenditures by Income Quintiles (Series CXUTOTALEXPLB0101M),
 
+Ai Model Used to Help Debug and solve some coding issue:
+OpenAI. (2026). ChatGPT (GPT-5.3-mini) [Large language model]. https://chat.openai.com
+
 Suraj Poudel
 https://github.com/surajpoudel-Omaha
