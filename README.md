@@ -36,7 +36,9 @@ Data or Variables using the BLS API:
 
 Ai Model Used to Help Debug:
 
-  OpenAI. (2026). ChatGPT (GPT-5.3-mini) [Large language model]. https://chat.openai.com
+OpenAI. (2026). ChatGPT (GPT-5.3-mini) [Large language model]. https://chat.openai.com
+
+Link to Working Dashboard: https://surajpoudelsemesterproject.streamlit.app/
 
 Suraj Poudel
   https://github.com/surajpoudel-Omaha
