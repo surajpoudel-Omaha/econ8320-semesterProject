@@ -63,15 +63,8 @@ if view == "Unemployment DashBoard":
 
     unEmployment = unEmployment.sort_values("date")
 
-    filtered = unEmployment[
-        (unEmployment["year"] == current_year) &
-        (unEmployment["month"] == current_month)
-    ].dropna()
 
-    if not filtered.empty:
-        latest = filtered.iloc[0]
-    else:
-        latest = unEmployment.sort_values(["year", "month"]).dropna().iloc[-1]
+    latest = unEmployment.sort_values(["year", "month"]).dropna().iloc[-1]
 
     ### Unemployment DashBoard
     nonFarmWorkers = nonFarmersWorkers.sort_values(["year", "month"]).dropna().iloc[-1]
