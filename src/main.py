@@ -48,6 +48,7 @@ if view == "Unemployment DashBoard":
         "Nebraska Unemployment": "Nebraska"
     }
 
+    # Used OpenAI. (2026). ChatGPT (GPT-5.3-mini) [Large language model]. https://chat.openai.com to fix the issue not getting corret information in the ploty. The reverst_map helped to get the key to get the cossponding column to select 
     reverse_map = {v: k for k, v in labelMap.items()}
 
     for col in labelMap.keys():
