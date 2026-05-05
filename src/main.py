@@ -64,7 +64,7 @@ if view == "Unemployment DashBoard":
     unEmployment = unEmployment.sort_values("date")
 
 
-    latest = unEmployment.dropna().iloc[-1]
+    latest = unEmployment.iloc[-1]
 
     ### Unemployment DashBoard
     nonFarmWorkers = nonFarmersWorkers.sort_values(["year", "month"]).dropna().iloc[-1]
