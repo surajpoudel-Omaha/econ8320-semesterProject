@@ -16,10 +16,10 @@ Filtering by year and month
 Simple interface
 
 Tech Stack
-Python
-Pandas
-Plotly
-Streamlit
+  Python
+  Pandas
+  Plotly
+  Streamlit
 
 Data or Variables using the BLS API:
 1. Unemployment Rate (Series LNU04000000),
@@ -35,7 +35,8 @@ Data or Variables using the BLS API:
 11. Average annual expenditures by Income Quintiles (Series CXUTOTALEXPLB0101M),
 
 Ai Model Used to Help Debug and solve some coding issue:
-OpenAI. (2026). ChatGPT (GPT-5.3-mini) [Large language model]. https://chat.openai.com
+
+  OpenAI. (2026). ChatGPT (GPT-5.3-mini) [Large language model]. https://chat.openai.com
 
 Suraj Poudel
-https://github.com/surajpoudel-Omaha
+  https://github.com/surajpoudel-Omaha
